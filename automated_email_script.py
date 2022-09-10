@@ -1,3 +1,13 @@
+"""
+Github: Niraj-kumbhar
+------------------------
+Script to send multiple emails with different/same attachments.
+You can change subject, body of mail.
+Provide recieptents list and data to attach in mail.
+
+If you want to change or improve this script please create new branch and raise merge request.
+"""
+
 from email.mime.application import MIMEApplication
 from email.policy import default
 import smtplib
