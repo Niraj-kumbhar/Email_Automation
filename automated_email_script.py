@@ -47,7 +47,7 @@ for i in range(range_):
 
         msg['Subject'] = subject
 
-        msg.attach(MIMEText(body, 'plain')) # attach the body with the msg instance
+        msg.attach(MIMEText(body, 'html')) # attach the body with the msg instance
 
 
         # instance of MIMEBase and named as p
