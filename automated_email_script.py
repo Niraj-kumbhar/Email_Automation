@@ -30,6 +30,8 @@ range_ = df.shape[0]
 sender = open('security/sender_email.txt','r').read() # change if sender file name is different
 pass_key = open('security/app_pass.txt','r').read()
 constant_att = 'Evolutionary Psychology Takeaway Kit' #if any constant attachment is there for all mails
+subject = open('email_content/mail_subject.txt','r').read() # change subject 
+body = open('email_content/body.txt','r').read() #change body
 logs = [] 
 
 for i in range(range_):
@@ -43,27 +45,7 @@ for i in range(range_):
         msg['To'] =  toaddr
         #fname = df.Name[i].split()[0]   #for future use : extracts recievers name
 
-        msg['Subject'] = "Test_1 Certificate of Evolutionary Psychology Webinar" # change the subject if required
-
-        #change the body if required
-        body = f"""                                                         
-Greetings!
- 
-Thank you for being a part of Evolutionary Psychology Webinar, held on 28th August 2022, by team Mind Theatre. 
- 
-Please find your Certificate of  Participation and a Digital Takeaway Kit attached below.
- 
-We hope you liked our session and get to see your participation for our future events. Kindly stay tuned to our social media pages for further updates!
- 
-Our Official Accounts:
-Instagram | Facebook | LinkedIn 
- 
-Thank you.
- 
-Regards,
-Team Mind Theatre,
-S K Somaiya College of Arts, Commerce and Science.
-""" 
+        msg['Subject'] = subject
 
         msg.attach(MIMEText(body, 'plain')) # attach the body with the msg instance
 
