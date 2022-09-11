@@ -41,7 +41,7 @@ for i in range(range_):
         msg = MIMEMultipart() 
         msg['From'] = sender 
         msg['To'] =  toaddr
-        fname = df.Name[i].split()[0]   
+        #fname = df.Name[i].split()[0]   #for future use : extracts recievers name
 
         msg['Subject'] = "Test_1 Certificate of Evolutionary Psychology Webinar" # change the subject if required
 
