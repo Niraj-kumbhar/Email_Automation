@@ -22,14 +22,14 @@ start = datetime.now()
 
 def attachment_file(filename):
     # open the file to be sent 
-    attachment = open(f'data/{filename}.pdf', "rb")
+    attachment = open(f'data/{filename}.txt', "rb")
     return attachment
 
-df = pd.read_excel('email_data.xlsx') # change if recieptent data file name is different
+df = pd.read_excel('email_data.csv') # change if recieptent data file name is different
 range_ = df.shape[0]
 sender = open('security/sender_email.txt','r').read() # change if sender file name is different
 pass_key = open('security/app_pass.txt','r').read()
-constant_att = 'Evolutionary Psychology Takeaway Kit' #if any constant attachment is there for all mails
+constant_att = 'constant' #if any constant attachment is there for all mails
 subject = open('email_content/mail_subject.txt','r').read() # change subject 
 body = open('email_content/body.txt','r').read() #change body
 logs = [] 
@@ -61,15 +61,15 @@ for i in range(range_):
         p.set_payload((attachment).read()) # To change the payload into encoded form
         encoders.encode_base64(p) # encode into base64
         
-        p.add_header('Content-Disposition', "attachment; filename= %s.pdf" % filename)
+        p.add_header('Content-Disposition', "attachment; filename= %s.txt" % filename)
         msg.attach(p)    # attach the instance 'p' to instance 'msg'
 
         # attaching constant file
         p = MIMEBase('application', 'octet-stream')
-        cons = open(f'data/{constant_att}.pdf','rb')
+        cons = open(f'data/{constant_att}.txt','rb')
         p.set_payload((cons).read())
         encoders.encode_base64(p) # encode into base64
-        p.add_header('Content-Disposition', "attachment; filename= %s.pdf" % constant_att)
+        p.add_header('Content-Disposition', "attachment; filename= %s.txt" % constant_att)
         msg.attach(p)
         
         # creates SMTP session
@@ -95,5 +95,5 @@ time_ = datetime.now() - start
 print('*'*20,'\n')
 print(f'time taken: {time_}')
 logs_ = pd.DataFrame(list(zip(df.Email,df.Name,logs)),columns=['Email','Name','Status'])
-logs_.to_excel('logs.xlsx')
+logs_.to_csv('logs.csv')
 
