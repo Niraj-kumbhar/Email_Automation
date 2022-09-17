@@ -20,18 +20,44 @@ from datetime import datetime
 
 start = datetime.now()
 
+
 def attachment_file(filename):
     # open the file to be sent 
-    attachment = open(f'data/{filename}.txt', "rb")
+    attachment = open(f'data/{filename}.{file_exten}', "rb")
     return attachment
 
-df = pd.read_excel('email_data.csv') # change if recieptent data file name is different
+# read email_configs
+config = {}
+with open('email_config/config.txt','r') as f:
+    for line in f:
+        line = line.strip()
+        name, var=line.partition("=")[::2]
+        config[name.strip()] = str(var).strip()
+
+#set email_configs
+file_exten = config['file_extension'] # file extension
+isConstant = True if config['Do you want to send one common file for all email(y/n)'] == 'y' else False # is constant file there
+constant_att = config['that_common_filename'] #if any constant attachment is there for all mails
+subject = config['Email_Subject'] # set subject
+body = open('email_config/body.txt','r').read() #change body
+# read Receiptents emails
+df = pd.read_csv('email_config/email_data.csv') # change if recieptent data file name is different
 range_ = df.shape[0]
-sender = open('security/sender_email.txt','r').read() # change if sender file name is different
-pass_key = open('security/app_pass.txt','r').read()
-constant_att = 'constant' #if any constant attachment is there for all mails
-subject = open('email_content/mail_subject.txt','r').read() # change subject 
-body = open('email_content/body.txt','r').read() #change body
+
+# read security.txt
+security = {}
+with open('security/security.txt','r') as f:
+    for line in f:
+        line = line.strip()
+        name, var=line.partition("=")[::2]
+        security[name.strip()] = str(var).strip()
+# set security
+sender = security['Sender_email'] # change if sender file name is different
+pass_key = security['AppPasscode']
+
+
+ 
+
 logs = [] 
 
 for i in range(range_):
@@ -61,16 +87,17 @@ for i in range(range_):
         p.set_payload((attachment).read()) # To change the payload into encoded form
         encoders.encode_base64(p) # encode into base64
         
-        p.add_header('Content-Disposition', "attachment; filename= %s.txt" % filename)
+        p.add_header('Content-Disposition', f"attachment; filename= {filename}.{file_exten}")
         msg.attach(p)    # attach the instance 'p' to instance 'msg'
 
         # attaching constant file
-        p = MIMEBase('application', 'octet-stream')
-        cons = open(f'data/{constant_att}.txt','rb')
-        p.set_payload((cons).read())
-        encoders.encode_base64(p) # encode into base64
-        p.add_header('Content-Disposition', "attachment; filename= %s.txt" % constant_att)
-        msg.attach(p)
+        if isConstant:
+            p = MIMEBase('application', 'octet-stream')
+            cons = open(f'data/{constant_att}.{file_exten}','rb')
+            p.set_payload((cons).read())
+            encoders.encode_base64(p) # encode into base64
+            p.add_header(f'Content-Disposition', f"attachment; filename= {constant_att}.{file_exten}")
+            msg.attach(p)
         
         # creates SMTP session
         s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -89,10 +116,11 @@ for i in range(range_):
         continue
 
     finally:
-        print(f'Completed: {df.Name}')
+        print(f'{i+1} Completed: {df.Name[i]}')
+
 
 time_ = datetime.now() - start
-print('*'*20,'\n')
+print('\n','*'*20,'\n')
 print(f'time taken: {time_}')
 logs_ = pd.DataFrame(list(zip(df.Email,df.Name,logs)),columns=['Email','Name','Status'])
 logs_.to_csv('logs.csv')
