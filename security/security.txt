@@ -1,2 +1,2 @@
-Sender_email= spidersniff1638@gmail.com
-AppPasscode= ioqvupbhnllceyap
+Sender_email= sender@gmail.com
+AppPasscode= demopassCode

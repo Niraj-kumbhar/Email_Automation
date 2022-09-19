@@ -1,0 +1,12 @@
+==========Prechecks Report==========
+DateTime: 2022-09-18 23:45:49.059788
+==========File checks==========
+File extension selected: txt
+No of Files not found : 1
+File(s) not found for below Names:
+ ab
+==========Check Duplicates==========
+Duplicate in Name: 0
+Duplicate in Emails: 1
+Duplicate Email Data:
+ ab abc1@gmail.com
