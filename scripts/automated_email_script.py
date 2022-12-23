@@ -20,15 +20,18 @@ from datetime import datetime
 
 start = datetime.now()
 
+Slog =  open('..//logs/Scriptlogs.txt','a')
+Slog.write(f"\n\n{datetime.now()}-->Started script\n")
 
 def attachment_file(filename):
     # open the file to be sent 
-    attachment = open(f'data/{filename}.{file_exten}', "rb")
+    attachment = open(f'..//data/{filename}.{file_exten}', "rb")
     return attachment
 
 # read email_configs
 config = {}
-with open('email_config/config.txt','r') as f:
+Slog.write(f"{datetime.now()}-->Reading email config file\n")
+with open('..//email_config/config.txt','r') as f:
     for line in f:
         line = line.strip()
         name, var=line.partition("=")[::2]
@@ -39,14 +42,16 @@ file_exten = config['file_extension'] # file extension
 isConstant = True if config['Do you want to send one common file for all email(y/n)'] == 'y' else False # is constant file there
 constant_att = config['that_common_filename'] #if any constant attachment is there for all mails
 subject = config['Email_Subject'] # set subject
-body = open('email_config/body.txt','r').read() #change body
+body = open('..//email_config/body.txt','r').read() #change body
 # read Receiptents emails
-df = pd.read_csv('email_config/email_data.csv') # change if recieptent data file name is different
+Slog.write(f"{datetime.now()}-->Reading email data file\n")
+df = pd.read_csv('..//email_config/email_data.csv') # change if recieptent data file name is different
 range_ = df.shape[0]
 
-# read security.txt
+# read security.txt  Setup login info
 security = {}
-with open('security/security.txt','r') as f:
+Slog.write(f"{datetime.now()}-->Reading security file\n")
+with open('..//security/security.txt','r') as f:
     for line in f:
         line = line.strip()
         name, var=line.partition("=")[::2]
@@ -59,7 +64,7 @@ pass_key = security['AppPasscode']
  
 
 logs = [] 
-
+Slog.write(f"{datetime.now()}-->Starting email send process\n")
 for i in range(range_):
 
     try:
@@ -93,7 +98,7 @@ for i in range(range_):
         # attaching constant file
         if isConstant:
             p = MIMEBase('application', 'octet-stream')
-            cons = open(f'data/{constant_att}.{file_exten}','rb')
+            cons = open(f'..//data/{constant_att}.{file_exten}','rb')
             p.set_payload((cons).read())
             encoders.encode_base64(p) # encode into base64
             p.add_header(f'Content-Disposition', f"attachment; filename= {constant_att}.{file_exten}")
@@ -110,18 +115,27 @@ for i in range(range_):
         s.quit() # terminating the session
         logs.append(1)
 
+
+
     except Exception as e:
         print(e)
         logs.append(0)
+        Slog.write(f"{datetime.now()}-->Exeception: {e}\n")
         continue
 
     finally:
         print(f'{i+1} Completed: {df.Name[i]}')
+        if (i%5==0) or (i==(range_-1)): # will rpint in interval of 5 or last record
+            Slog.write(f"Completed {i} records\n")
 
+Slog.write(f"\n{datetime.now()}--> Email sending process completed\n")
 
 time_ = datetime.now() - start
 print('\n','*'*20,'\n')
 print(f'time taken: {time_}')
 logs_ = pd.DataFrame(list(zip(df.Email,df.Name,logs)),columns=['Email','Name','Status'])
-logs_.to_csv('logs.csv')
+Slog.write(f"{datetime.now()}--> Creating logs csv file\n")
+logs_.to_csv('..//logs/logs.csv')
+Slog.write(f"{datetime.now()}--> Script End\n")
+Slog.close()
 

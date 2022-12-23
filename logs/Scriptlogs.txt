@@ -1,0 +1,52 @@
+2022-12-24 04:15:16.261098-->Started script
+2022-12-24 04:15:16.261109-->Reading email config file
+2022-12-24 04:15:16.261171-->Reading email data file
+2022-12-24 04:15:16.262578-->Reading security file
+2022-12-24 04:15:16.262621-->Starting email send process
+Completed 0 records
+Completed 2 records
+
+2022-12-24 04:15:26.279593--> Email sending process completed
+2022-12-24 04:15:26.280656--> Creating logs csv file
+2022-12-24 04:15:26.282876--> Script End
+2022-12-24 04:16:24.170269-->Started script
+2022-12-24 04:16:24.170279-->Reading email config file
+2022-12-24 04:16:24.170338-->Reading email data file
+2022-12-24 04:16:24.171651-->Reading security file
+2022-12-24 04:16:24.171691-->Starting email send process
+Completed 0 records
+Completed 2 records
+
+2022-12-24 04:16:35.775617--> Email sending process completed
+2022-12-24 04:16:35.776838--> Creating logs csv file
+2022-12-24 04:16:35.779124--> Script End
+
+2022-12-24 04:20:43.307672-->Started script
+2022-12-24 04:20:43.307682-->Reading email config file
+2022-12-24 04:20:43.307742-->Reading email data file
+2022-12-24 04:20:43.309070-->Reading security file
+2022-12-24 04:20:43.309110-->Starting email send process
+Completed 0 records
+Completed 2 records
+
+2022-12-24 04:20:56.060480--> Email sending process completed
+2022-12-24 04:20:56.061543--> Creating logs csv file
+2022-12-24 04:20:56.063536--> Script End
+
+
+2022-12-24 04:51:49.119782-->Started script
+2022-12-24 04:51:49.119793-->Reading email config file
+2022-12-24 04:51:49.120061-->Reading email data file
+
+
+2022-12-24 04:52:06.755988-->Started script
+2022-12-24 04:52:06.755998-->Reading email config file
+2022-12-24 04:52:06.756059-->Reading email data file
+2022-12-24 04:52:06.757365-->Reading security file
+2022-12-24 04:52:06.757561-->Starting email send process
+Completed 0 records
+Completed 2 records
+
+2022-12-24 04:52:16.875768--> Email sending process completed
+2022-12-24 04:52:16.876976--> Creating logs csv file
+2022-12-24 04:52:16.879939--> Script End

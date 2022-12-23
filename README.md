@@ -23,14 +23,25 @@ This script can be useful to send multiple emails with attachment (with differen
  > I will suggest keep names of files and folders as mentioned above, if you change name you need to the script also. 
 
 *  `data` --> Keep your all attachment files in this folder, and file names will be same as name of receiptents.
+
 * `email_config` --> Folder contains files that will use for email contents
 	* `body.txt` : Keep your body inside this
 	* `config.txt` : It is key value pair file, you can change subject, attachment file extension and comman file name using this.
 	* `email_data.csv` store your receiptents Email and Name
 
-*  security --> Folder will have `security.txt` file which will contain sender email address and App Password generated on google.
+* `logs` --> This folder will contain all logs related files
+	* `logs.csv`: will get generated after running main script. Each row will have reciever's email and name with status. 
+		* 0 means mail not sent
+		* 1 means mail sent(as script doesn't recieve any receipt of email sent, script is assuming mail is sent if there is no error while connecting to mail and finding attachment, you need to check manual on gmail if any email id is wrong)
+	* `reports.txt`: This file will get generated when you will run `checks.py`.
+	* `Scriplogs.txt`: will conatin scrip logs
 
-*  `automated_email_script.py` is main script
+*  `security` --> Folder will have `security.txt` file which will contain sender email address and App Password generated on google.
+
+* `scripts` --> all scripts files, mostly if you dont have any technical knowledge stay away from this folder.
+	*  `automated_email_script.py` is main script, which you will run.
+	* `checks.py`: you can run this script before running main to check for errors and mistakes you can make.
+
 *  `requirements.txt` for installing required packages
 *  After running script, it will print runtime of script in command line and will generate excel file named `logs.csv`. logs file will have reciever data with status (0 or 1). 
 	* 1 --> mail send successfully
