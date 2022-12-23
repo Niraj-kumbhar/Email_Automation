@@ -1,0 +1,20 @@
+==========Prechecks Report==========
+DateTime: 2022-12-24 04:50:16.670548
+
+==========File logs==========
+File extension selected: txt
+Do you want to send one common file for all email(y/n): yes, constant will be common file
+data/constant not exists
+No of Files not found : 3
+
+File(s) not found for below Names:
+1.abc
+2.xyz
+3.abc
+
+==========Check Duplicates==========
+Duplicate in Name: 1
+Duplicate in Emails: 0
+
+Duplicate Name Data:
+abc abc1@gmail.com
