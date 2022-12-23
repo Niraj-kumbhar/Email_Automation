@@ -48,11 +48,15 @@ This script can be useful to send multiple emails with attachment (with differen
 	* 0 --> Error mail not sent
 
 # Run Script
-* After verifying all things, open command prompt and use following command to start script:
+* After verifying all things, open email_automation/scripts in File explorer, type `cmd` in path url present in top. Command line interface(CMD) will open, then Run below command to check warning and errors:
+
+		python checks.py
+
+* This script will generate `report.txt` file in logs folder. check file, and no errors present Run main script by running below command in CMD:
 
 		python automated_email_script.py
 
-* Script will print runtime at the end, and will generate log file.
+* Script will print time taken at the end, and will generate 2 logs file, `logs.csv` and `Scriptlogs.txt`.
 
    
 
