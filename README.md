@@ -22,7 +22,7 @@ This script can be useful to send multiple emails with attachment (with differen
  * After Setting up your environment, lets setup files and folders according to our script
  > I will suggest keep names of files and folders as mentioned above, if you change name you need to the script also. 
 
-*  `data` --> Keep your all attachment files in this folder, and file names will be same as name of receiptents.
+*  `data` --> Keep your all attachment files in this folder, and file names will be same as name of receiptents(Case sensitive).
 
 * `email_config` --> Folder contains files that will use for email contents
 	* `body.txt` : Keep your body inside this
