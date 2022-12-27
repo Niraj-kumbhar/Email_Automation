@@ -31,7 +31,7 @@ def error_check():
     print('Checking  ...')
     for i in range(df.shape[0]):
         file = f"{df.Name[i]}.{config['file_extension']}"
-        isExist = os.path.exists(f'data/{file}')
+        isExist = os.path.exists(f'..//data/{file}')
         df.loc[i,['isExist']] = isExist
    # print("="*10,"Files Not Found","="*10)
     temp = "no"
@@ -39,7 +39,7 @@ def error_check():
         f.write('\n'+'='*10+"File logs"+"="*10+"\n")
         f.write(f"File extension selected: {config['file_extension']}\n")
     if config['Do you want to send one common file for all email(y/n)'] == 'y':
-        isExist_con = os.path.exists(f"data/{config['that_common_filename']}.{config['file_extension']}")
+        isExist_con = os.path.exists(f"..//data/{config['that_common_filename']}.{config['file_extension']}")
         temp = f"yes, {config['that_common_filename']} will be common file"
 
         with open('..//logs/reports.txt','a') as f:
@@ -49,7 +49,7 @@ def error_check():
             # print(f"data/{config['that_common_filename']} not exists")
             # print("="*20)
             with open('..//logs/reports.txt','a') as f:
-                f.write(f"data/{config['that_common_filename']} not exists\n")
+                f.write(f"..//data/{config['that_common_filename']} not exists\n")
 
 
 
