@@ -1,4 +1,3 @@
-*.ipynb
 auto_email_script
 security/*
 logs/*.csv
