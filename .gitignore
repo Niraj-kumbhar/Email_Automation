@@ -1,4 +1,5 @@
-test.ipynb
+*.ipynb
 auto_email_script
-security/demo.txt
+security/*
 logs/*.csv
+requirements_new.txt
