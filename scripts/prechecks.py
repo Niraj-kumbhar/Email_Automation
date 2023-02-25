@@ -1,0 +1,2 @@
+class prechecks:
+    pass
