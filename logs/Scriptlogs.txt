@@ -89,3 +89,30 @@ Completed 1 records
 2023-02-19 19:25:39.330478--> Email sending process completed
 2023-02-19 19:25:39.331220--> Creating logs csv file
 2023-02-19 19:25:39.332787--> Script End
+
+
+2023-02-27 14:51:36.205329-->Started script
+2023-02-27 14:51:36.205329-->Reading email config file
+2023-02-27 14:51:36.395959-->Reading email data file
+2023-02-27 14:51:36.399038-->Reading security file
+2023-02-27 14:51:36.407210-->Starting email send process
+Completed 0 records
+Completed 1 records
+
+2023-02-27 14:51:49.631362--> Email sending process completed
+2023-02-27 14:51:49.740294--> Creating logs csv file
+2023-02-27 14:51:49.852432--> Script End
+
+
+2023-03-03 15:48:20.894918-->Started script
+2023-03-03 15:48:20.894918-->Reading email config file
+2023-03-03 15:48:20.902612-->Reading email data file
+2023-03-03 15:48:20.904600-->Reading security file
+2023-03-03 15:48:20.955568-->Starting email send process
+Completed 0 records
+2023-03-03 15:48:37.266319-->Exeception: [Errno 2] No such file or directory: '..//data/rohanya.txt'
+Completed 2 records
+
+2023-03-03 15:48:37.266319--> Email sending process completed
+2023-03-03 15:48:37.268194--> Creating logs csv file
+2023-03-03 15:48:37.288691--> Script End
