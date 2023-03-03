@@ -89,3 +89,33 @@ Completed 1 records
 2023-02-19 19:25:39.330478--> Email sending process completed
 2023-02-19 19:25:39.331220--> Creating logs csv file
 2023-02-19 19:25:39.332787--> Script End
+
+
+2023-02-26 19:03:22.910143-->Started script
+2023-02-26 19:03:22.910143-->Reading email config file
+
+
+2023-02-26 19:15:27.220871-->Started script
+2023-02-26 19:15:27.220871-->Reading email config file
+
+
+2023-02-26 19:18:29.940440-->Started script
+2023-02-26 19:18:29.940440-->Reading email config file
+
+
+2023-02-26 19:21:09.889156-->Started script
+2023-02-26 19:21:09.889156-->Reading email config file
+2023-02-26 19:21:09.903647-->Reading email data file
+
+
+2023-03-03 19:37:38.226139-->Started script
+2023-03-03 19:37:38.226139-->Reading email config file
+2023-03-03 19:37:38.226139-->Reading email data file
+2023-03-03 19:37:38.505903-->Reading security file
+2023-03-03 19:37:38.526320-->Starting email send process
+Completed 0 records
+Completed 1 records
+
+2023-03-03 19:37:49.206541--> Email sending process completed
+2023-03-03 19:37:49.206541--> Creating logs csv file
+2023-03-03 19:37:49.260544--> Script End
