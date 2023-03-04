@@ -62,21 +62,71 @@ class email_main:
         print (self.sender)
         print (self.pass_key)
 
-        #self.__send_mail()
+        self.__send_mail()
 
     
     def __send_mail(self):
-        # s = smtplib.SMTP('smtp.gmail.com', 587)
-        # s.starttls()
-        # s.login(self.sender, self.pass_key)
+        print ("connection satrt")
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        s.login(self.sender, self.pass_key)
+        print ("connection done")
+         
+        for self.i in range(self.range_):
+            print ("satrt loop ")
+            self.__attachment_file()
+            print ("starting process of sending mail")
 
-        # for i in range(self.range_):
+
+    def __read_attachment(self,filename):
+    # open the file to be sent 
+        attachment = open(f'..//data/{filename}.{self.file_exten}', "rb")
+        return attachment
+
+
             
 
         
-        
+    def __attachment_file(self):
+        print ("attachment file satrt")
 
-    def __attachment_file(self,filename):
+        self.toaddr = self.df.Email[self.i] 
+        
+        msg = MIMEMultipart() 
+        msg['From'] = self.sender 
+        msg['To'] =  self.toaddr
+        #fname = df.Name[i].split()[0]   #for future use : extracts recievers name
+
+        msg['Subject'] = self.subject
+
+        msg.attach(MIMEText(self.body, 'html')) # attach the body with the msg instance
+
+
+        # instance of MIMEBase and named as p
+        p = MIMEBase('application', 'octet-stream')
+
+        filename = self.df.Name[self.i]
+        attachment = self.__read_attachment(filename)  # add file name
+        
+        #attach = MIMEApplication(attachment, _subtype="pdf")
+        
+        p.set_payload((attachment).read()) # To change the payload into encoded form
+        encoders.encode_base64(p) # encode into base64
+        
+        p.add_header('Content-Disposition', f"attachment; filename= {filename}.{self.file_exten}")
+        msg.attach(p)    # attach the instance 'p' to instance 'msg'
+
+        # attaching constant file
+        if self.isConstant:
+            p = MIMEBase('application', 'octet-stream')
+            cons = open(f'..//data/{self.constant_att}.{self.file_exten}','rb')
+            p.set_payload((cons).read())
+            encoders.encode_base64(p) # encode into base64
+            p.add_header(f'Content-Disposition', f"attachment; filename= {self.constant_att}.{self.file_exten}")
+            msg.attach(p)
+        print ("attachment file is done")
+
+
         # open the file to be sent
        
         
