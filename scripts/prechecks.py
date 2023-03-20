@@ -21,13 +21,13 @@ class prechecks:
          f.write(f"DateTime: {datetime.now()}\n")
         print("start")
         self.data()
-        print("in prechecks")
-        self.error_check()
-        print("error check complete")
-        self.check_duplicates()
-        print("checking for duplicate completed")
-        with open('..//logs/reports.txt','r') as f:
-          print(f.read())
+        #print("in prechecks")
+        #self.error_check()
+        #print("error check complete")
+        #self.check_duplicates()
+        #print("checking for duplicate completed")
+        #with open('..//logs/reports.txt','r') as f:
+         # print(f.read())
     
     # gathering data
     def data(self):
@@ -39,7 +39,7 @@ class prechecks:
                 name, var=line.partition("=")[::2]
                 self.config[name.strip()] = str(var).strip()
         print("action completed")
-    
+        self.error_check()
     
          
     def error_check(self):
@@ -80,6 +80,10 @@ class prechecks:
                 for i,_ in enumerate(list_error):
                     f.write(f"{i+1}.{_}\n")
         
+        self.check_duplicates()
+        print("checking for duplicate completed")
+        with open('..//logs/reports.txt','r') as f:
+          print(f.read())
     
     def check_duplicates(self):
         dup_name = self.df[self.df.Name.duplicated()]
