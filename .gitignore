@@ -1,6 +1,9 @@
 auto_email_script
 security/demo.txt
-logs/*.csv
+logs/*
 requirements_new.txt
 *.ipynb
 scripts/old_*
+data/*
+*.ipynb
+scripts/__py*

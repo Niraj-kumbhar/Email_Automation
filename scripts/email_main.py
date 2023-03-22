@@ -151,11 +151,3 @@ class email_main:
 
 
         # open the file to be sent
-       
-        
-
-    
-        
-
-
-a = email_main()
