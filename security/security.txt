@@ -1,2 +1,2 @@
-Sender_email= projects.test0@gmail.com
+Sender_email= projects.test0@gmail.com 
 AppPasscode= ruzoounzbulbgkoc

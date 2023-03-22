@@ -1,11 +1,13 @@
 ==========Prechecks Report==========
-DateTime: 2023-02-19 19:21:29.002558
+DateTime: 2023-03-20 11:01:49.387513
 
 ==========File logs==========
 File extension selected: txt
-Do you want to send one common file for all email(y/n): yes, constant will be common file
 No of Files not found : 0
 
 ==========Check Duplicates==========
-Duplicate in Name: 0
+Duplicate in Name: 1
 Duplicate in Emails: 0
+
+Duplicate Name Data:
+Niraj rohan@gmail.com

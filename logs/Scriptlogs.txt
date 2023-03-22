@@ -38,7 +38,6 @@ Completed 2 records
 2022-12-24 04:51:49.119793-->Reading email config file
 2022-12-24 04:51:49.120061-->Reading email data file
 
-
 2022-12-24 04:52:06.755988-->Started script
 2022-12-24 04:52:06.755998-->Reading email config file
 2022-12-24 04:52:06.756059-->Reading email data file
