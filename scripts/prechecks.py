@@ -15,7 +15,8 @@ class prechecks:
                 with open('../logs/reports.txt','w') as f:
                     f.write("="*10+"Prechecks Report"+"="*10+"\n")
                     f.write(f"DateTime: {datetime.now()}\n")
-                                
+                
+                self.error = 0
                 self.data()
         except Exception as e:
             Slog.write(f"\n\n{datetime.now()}-->Exception occured\n")
@@ -69,16 +70,20 @@ class prechecks:
 
                 if isExist_con == False:
                     Slog.write(f"\n{datetime.now()}--> No common file exists")
+                    self.error = 1 # set Error flag true
                     with open('..//logs/reports.txt','a') as f:
                         f.write(f"..//data/{self.config['that_common_filename']} not exists\n")
-        
+
+            
             ErrNo = self.df.shape[0] - self.df.isExist.sum()
             list_error = self.df[self.df.isExist==False]['Name'].values.tolist()
+            
             
             with open('..//logs/reports.txt','a') as f:
 
                 f.write(f"No of Files not found : {ErrNo}\n")
                 if ErrNo>0:
+                    self.error=1 # set Error flag true
                     f.write("\nFile(s) not found for below Names:\n")
                     for i,_ in enumerate(list_error):
                         f.write(f"{i+1}.{_}\n")
@@ -103,6 +108,8 @@ class prechecks:
           
             dup_email = self.df[self.df.Email.duplicated()]
 
+            
+
 
             with open('..//logs/reports.txt','a') as f:
                 f.write('\n'+'='*10+"Check Duplicates"+"="*10+"\n")
@@ -111,6 +118,7 @@ class prechecks:
                 f.write(f"Duplicate in Emails: {dup_email.shape[0]}\n")
 
                 if dup_name.shape[0]>0:
+                    self.error=1 # set Error flag true
                     f.write("\nDuplicate Name Data:\n")
                     Slog.write(f"\n{datetime.now()}--> Duplicates found")
                     for _ in dup_name.index:
@@ -119,13 +127,16 @@ class prechecks:
                         f.write(f"{name} {email}\n")
 
                 if dup_email.shape[0]>0:
+                    self.error=1 # set Error flag true
                     f.write("\nDuplicate Email Data:\n")
                     for _ in dup_email.index:
                         name = dup_email.Name[_]
                         email = dup_email.Email[_]
                         f.write(f"{name} {email}")
+             
 
         except Exception as e:
             print(e)
         finally:
             Slog.close()
+            return self.error  
