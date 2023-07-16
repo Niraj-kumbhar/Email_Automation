@@ -1,4 +1,4 @@
 file_extension= txt
-Do you want to send one common file for all email(y/n)= n
+Do you want to send one common file for all email(y/n)= y
 that_common_filename= constant
-Email_Subject= Test Email Automation 19/02 - no file
+Email_Subject= Test Email Automation 16/07 11:05

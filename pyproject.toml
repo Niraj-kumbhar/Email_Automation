@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "email-automation"
+version = "0.1.0"
+description = ""
+authors = ["Niraj-kumbhar <kumbharniraj1@gmail.com>"]
+readme = "README.md"
+packages = [{include = "email_automation"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "1.4.4"
+openpyxl = "3.0.10"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.24.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
